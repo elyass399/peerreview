@@ -1,30 +1,33 @@
-export default function WelcomePage() {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-between bg-white relative py-20">
-        {/* Welcome Text */}
-        <div className="text-center">
-          <h1 className="text-8xl italic font-bold">WELCOME</h1>
-          <h2 className="text-4xl mt-2">to</h2>
-          <h3 className="text-4xl font-medium mt-2 relative left-5">peerreview</h3>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina di Benvenuto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="min-h-screen flex flex-col items-center justify-between bg-white relative py-20">
+        <!-- Welcome Text -->
+        <div class="text-center">
+            <h1 class="text-8xl italic font-bold">BENVENUTO</h1>
+            <h2 class="text-4xl mt-0">a</h2>
+            <h3 class="text-4xl font-medium mt-0">peerreview</h3>
         </div>
-  
-        {/* Buttons */}
-        <div className="mt-20 flex flex-col gap-6">
-          <button className="px-8 py-4 bg-blue-500 text-white rounded-2xl text-2xl shadow-lg hover:bg-blue-600 transition">
-            Create a Room
-          </button>
-          <button className="px-8 py-4 bg-green-500 text-white rounded-2xl text-2xl shadow-lg hover:bg-green-600 transition">
-            Join a Room
-          </button>
+
+        <!-- Buttons -->
+        <div class="mt-20 flex flex-col gap-6">
+            <a href="{{ url_for('create_room') }}">
+                <button class="px-8 py-4 bg-blue-500 text-white rounded-2xl text-2xl shadow-lg hover:bg-blue-600 transition">
+                    Crea una Stanza
+                </button>
+            </a>
+            <a href="{{ url_for('join_room') }}">
+                <button class="px-8 py-4 bg-green-500 text-white rounded-2xl text-2xl shadow-lg hover:bg-green-600 transition">
+                    Unisciti a una Stanza
+                </button>
+            </a>
         </div>
-  
-        {/* Language Switcher */}
-        <div className="absolute bottom-8 right-8">
-          <button className="px-6 py-3 bg-gray-700 text-white rounded-lg shadow-md hover:bg-gray-900 transition">
-            Change Language
-          </button>
-        </div>
-      </div>
-    );
-  }
-  
+    </div>
+</body>
+</html>
