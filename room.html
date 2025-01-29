@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stanza {{ room_id }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+   
+</head>
+<body>
+    <div class="circle" onclick="window.location.href='{{ url_for('welcome_page') }}'"></div>
+    <div class="min-h-screen flex flex-col items-center justify-center bg-white relative py-20">
+        <h1 class="text-4xl font-bold mb-8">Stanza {{ room_id }}</h1>
+        <div class="flex flex-col items-center gap-4">
+            {% for member in members %}
+                {% if member == session['user'] %}
+                    <button class="px-8 py-4 bg-red-500 text-white rounded-2xl text-2xl shadow-lg hover:bg-red-600 transition" onclick="window.location.href='{{ url_for('personal_page') }}'">
+                        la tua Pagina Personale
+                    </button>
+                {% else %}
+                    <button class="px-8 py-4 bg-blue-500 text-white rounded-2xl text-2xl shadow-lg hover:bg-blue-600 transition">
+                        {{ member }}
+                    </button>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="mt-20 w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-4">Classifica</h2>
+            <ul class="list-disc pl-5">
+                {% for member, score in classement.items() %}
+                    <li>{{ member }}: {{ score }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
